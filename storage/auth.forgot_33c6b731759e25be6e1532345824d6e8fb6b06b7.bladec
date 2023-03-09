@@ -1,0 +1,71 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+
+<body class="bg-light-gray" id="body">
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
+ <div class="d-flex flex-column justify-content-between">
+ <div class="row justify-content-center mt-5">
+ <div class="col-md-10">
+ <div class="card card-default">
+ <div class="card-header">
+ <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
+ <a class="w-auto pl-0" href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <img src="<?php echo \htmlentities(route('app/views/'.'images/logo.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="Mono">
+ <span class="brand-name text-dark">MONO</span>
+ </a>
+ </div>
+ </div>
+ <div class="card-body p-5">
+ <h4 class="text-dark mb-5">Reset Your Password</h4>
+ <?php /*            ERROR*/ ?>
+ <?php if(isset($_SESSION['errors']) && isset($_GET['msg'])): ?>
+ <ul>
+ <?php $__currentLoopData = $_SESSION['errors']; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $er): $loop = $this->incrementLoopIndices();  ?>
+ <div class="alert alert-danger alert-dismissible fade show" role="alert">
+ <strong>Warning! </strong><?php echo \htmlentities($er??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+ <span aria-hidden="true">×</span>
+ </button>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
+ <?php endif; ?>
+ <?php /*            SUCCESS*/ ?>
+ <?php if(isset($_SESSION['success']) && isset($_GET['msg'])): ?>
+ <div class="alert alert-success alert-dismissible fade show" role="alert">
+ <strong>Success! </strong>Kiểm tra email của bạn
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+ <span aria-hidden="true">×</span>
+ </button>
+ </div>
+ <?php endif; ?>
+ <form action="<?php echo \htmlentities(route('forgot-post')??'', ENT_QUOTES, 'UTF-8', false); ?>" method="post">
+ <div class="row">
+ <div class="form-group col-md-12 mb-4">
+ <input type="email" name="email_fg" class="form-control input-lg" id="name" aria-describedby="nameHelp" placeholder="Email">
+ </div>
+
+ <div class="col-md-12">
+ <input type="submit" name="send" class="btn btn-primary btn-pill mb-4" value="Submit">
+
+ <p>Already have an account?
+ <a class="text-blue" href="<?php echo \htmlentities(route('sign-in')??'', ENT_QUOTES, 'UTF-8', false); ?>">Sign in</a>
+ </p>
+ </div>
+ </div>
+ </form>
+
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+</div>
+
+</body>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>
