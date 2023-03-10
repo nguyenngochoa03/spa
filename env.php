@@ -8,7 +8,6 @@ const DBHOST = "127.0.0.1";
 
 //
 const BASE_URL = "http://localhost/spa/";
-
 function route($nameRoute){
     return BASE_URL.$nameRoute;
 }
