@@ -16,17 +16,10 @@
           </a>
           <ul>
             <li class="">
-              <a href="basic-table.html">Basic
-                Table</a>
+              <a href="{{route('service-category')}}">Danh mục dịch vụ</a>
             </li>
             <li class="">
-              <a href="datatable.html">Data
-                Table</a>
-            </li>
-            <li class="">
-              <a href="dynamic-table.html">
-                Dynamic Table
-              </a>
+              <a href="{{route('service-list')}}">Dịch vụ</a>
             </li>
           </ul>
         </li>

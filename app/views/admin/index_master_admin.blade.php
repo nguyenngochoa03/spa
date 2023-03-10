@@ -13,7 +13,7 @@
 <body class="layout-light side-menu">
 <div class="mobile-search">
   <form action="https://demo.dashboardmarket.com/" class="search-form">
-    <img src="app/views/admin/public/assets/img/svg/search.svg" alt="search" class="svg">
+    <img src="{{route(''.'app/views/admin/public/assets/img/svg/search.svg')}}" alt="search" class="svg">
     <input class="form-control me-sm-2 box-shadow-none" type="search" placeholder="Search..." aria-label="Search">
   </form>
 </div>
@@ -42,7 +42,7 @@
       <h4 class="customizer__title">Customizer</h4>
       <span class="customizer__sub-title">Customize your overview page layout</span>
       <a href="#" class="customizer-close">
-        <img class="svg" src="app/views/admin/public/assets/img/svg/x2.svg" alt="">
+        <img class="svg" src="{{route(''.'app/views/admin/public/assets/img/svg/x2.svg')}}" alt="">
       </a>
     </div>
     <div class="customizer__body">
@@ -51,13 +51,13 @@
         <ul class="customizer-list d-flex layout">
           <li class="customizer-list__item">
             <a href="https://demo.dashboardmarket.com/hexadash-html/ltr" class="active">
-              <img src="app/views/admin/public/assets/img/ltr.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/ltr.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
           <li class="customizer-list__item">
             <a href="https://demo.dashboardmarket.com/hexadash-html/rtl">
-              <img src="app/views/admin/public/assets/img/rtl.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/rtl.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
@@ -69,13 +69,13 @@
         <ul class="customizer-list d-flex l_sidebar">
           <li class="customizer-list__item">
             <a href="#" data-layout="light" class="dark-mode-toggle active">
-              <img src="app/views/admin/public/assets/img/light.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/light.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
           <li class="customizer-list__item">
             <a href="#" data-layout="dark" class="dark-mode-toggle">
-              <img src="app/views/admin/public/assets/img/dark.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/dark.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
@@ -87,13 +87,13 @@
         <ul class="customizer-list d-flex l_navbar">
           <li class="customizer-list__item">
             <a href="#" data-layout="side" class="active">
-              <img src="app/views/admin/public/assets/img/side.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/side.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
           <li class="customizer-list__item top">
             <a href="#" data-layout="top">
-              <img src="app/views/admin/public/assets/img/top.png" alt="">
+              <img src="{{route(''.'app/views/admin/public/assets/img/top.png')}}" alt="">
               <i class="fa fa-check-circle"></i>
             </a>
           </li>
