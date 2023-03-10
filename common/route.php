@@ -38,6 +38,7 @@ $router->get('delete-service/{id}', [App\admin\controllers\CategoryController::c
 //
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('dang-nhap', [AuthController::class, 'login']);
+$router->get('dangnhap', [App\Controllers\UsersController::class, 'getdangnhap']);
 
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
