@@ -31,9 +31,9 @@ $router->get('detail-category/{id}', [App\admin\controllers\ServiceController::c
 //Service
 $router->get('service-list', [App\admin\controllers\ServiceController::class, 'listService']);
 $router->post('add-service-post', [App\admin\controllers\ServiceController::class, 'addServicePost']);
-$router->get('edit-service/{id}', [App\admin\controllers\CategoryController::class, 'editService']);
-$router->post('update-service/{id}', [App\admin\controllers\CategoryController::class, 'updateServicePost']);
-$router->get('delete-service/{id}', [App\admin\controllers\CategoryController::class, 'deteleService']);
+$router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
+$router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
+$router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
 
 //
 $router->get('home', [App\Controllers\HomeController::class, 'index']);

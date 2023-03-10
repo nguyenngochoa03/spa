@@ -47,7 +47,16 @@
                             <div class="form-group mb-20">
                               <input type="text" name="namesv" class="form-control" placeholder="Tên dịch vụ">
                             </div>
-
+                            <div class="support-form__input-id">
+                              <label>Danh mục</label>
+                              <div class="dm-select">
+                                <select name="catesv" class="select-search form-control ">
+                                  @foreach($category as $ct)
+                                    <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
                             <div class="button-group d-flex pt-25">
                               <input type="submit" name="add-new" class="btn btn-primary btn-default btn-squared text-capitalize" value="Add New">
                               <button type="reset" class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light" data-bs-dismiss="modal">Cancel</button>
@@ -93,12 +102,12 @@
               <div class="support-form__input">
                 <div class="d-flex flex-wrap">
                   <div class="support-form__input-id">
-                    <label>Id:</label>
+                    <label>Cate:</label>
                     <div class="dm-select ">
                       <select name="select-search" class="select-search form-control ">
                         <option value="0">All</option>
-                        @foreach($service as $sv)
-                          <option value="{{$sv->id}}">{{$sv->name}}</option>
+                        @foreach($category as $ct)
+                          <option value="{{$ct->id}}">{{$ct->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -187,16 +196,16 @@
                       <td>
                         <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                           <li>
-                            <a href="{{route('detail-service/'.$sv->id)}}"><button class="btn btn-info btn-default btn-squared ">Blog
-                              </button></a>
+                            <button class="btn btn-info btn-default btn-squared" onclick="location.href='{{route('detail-service/'.$sv->id)}}'">Detail
+                            </button>
                           </li>
                           <li>
-                            <a href="{{route('edit-service/'.$sv->id)}}"><button class="btn btn-warning btn-default btn-squared ">Edit
-                              </button></a>
+                            <button class="btn btn-warning btn-default btn-squared" onclick="location.href='{{route('edit-service/'.$sv->id)}}'">Edit
+                            </button>
                           </li>
                           <li>
-                            <a href="{{route('delete-service/'.$sv->id)}}" onclick="return confirm('Bạn có muốn xóa')"><button class="btn btn-danger btn-default btn-squared ">Delete
-                              </button></a>
+                            <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href='{{route('delete-service/'.$sv->id)}}' : ''">Delete
+                            </button>
                             </a>
                           </li>
                         </ul>
