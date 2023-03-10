@@ -2,7 +2,7 @@
 namespace App\Models;
 
 class Category extends BaseModel{
-    protected $table = 'categories';
+    protected $table = 'categorys';
     public function getAllCategory(){
         $sql = "SELECT * FROM $this->table";
         $this->setQuery($sql);
