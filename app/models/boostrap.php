@@ -47,4 +47,24 @@ class boostrap extends BaseModel
         $model->setQuery($sql);
         return $model->execute($data);
     }
+
+    public static function addItems($datas = []){
+        $model = new static;
+        $sql = "INSERT INTO $model->table VALUES (";
+        $totalItems = count($datas);
+        $i = 0;
+        $data = [];
+        foreach($datas as $key => $value){
+            if(++$i === $totalItems) {
+                $sql.= "?)";
+                $data[] = "$value";
+            }else {
+                $sql.= "? , ";
+                $data[] = "$value";
+            }
+
+        }
+        $model->setQuery($sql);
+        return $model->execute($data);
+    }
 }
