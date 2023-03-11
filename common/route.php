@@ -36,10 +36,22 @@ $router->post('update-service/{id}', [App\admin\controllers\CategoryController::
 $router->get('delete-service/{id}', [App\admin\controllers\CategoryController::class, 'deteleService']);
 
 //
+$router->get('/log-out', function () {
+    $_SESSION["login"] = false;
+    setcookie("email",$_POST["email"],time()-86401,'/');
+    setcookie("pass",$_POST["password"],time()-86401,'/');
+    header("location:./");
+});
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
-$router->get('dang-nhap', [AuthController::class, 'login']);
-$router->get('dangnhap', [App\Controllers\UsersController::class, 'getdangnhap']);
-
+$router->get('/', [App\Controllers\UsersController::class, 'index']);
+//$router->post('/', [App\Controllers\UsersController::class, 'index']);
+$router->get('/sign-up',[App\Controllers\UsersController::class,'signup']);
+$router->post('/sign-up',[App\Controllers\UsersController::class,'signup']);
+$router->get('user', [App\admin\controllers\UsersControlller::class, 'showUser']);
+$router->get('add-user', [App\admin\controllers\UsersControlller::class, 'addUser']);
+$router->get('delete-user-{id}', [App\admin\controllers\UsersControlller::class, 'deleteUser']);
+$router->get('update-user-{id}', [App\admin\controllers\UsersControlller::class, 'updateUser']);
+$router->post('update-user-post{id}', [App\admin\controllers\UsersControlller::class, 'postupdateUser']);
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
