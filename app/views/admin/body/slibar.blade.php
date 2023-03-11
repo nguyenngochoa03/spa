@@ -3,7 +3,7 @@
     <div class="sidebar__menu-group">
       <ul class="sidebar_nav">
         <li class="">
-          <a href="note.html">
+          <a href="{{route('admin')}}">
             <span class="nav-icon uil uil-clipboard-notes"></span>
             <span class="menu-text">Trang chủ</span>
           </a>
@@ -21,6 +21,9 @@
             <li class="">
               <a href="{{route('service-list')}}">Dịch vụ</a>
             </li>
+            <li class="">
+              <a href="{{route('service-blog')}}">Bài viết theo danh mục</a>
+            </li>
           </ul>
         </li>
         <li class="has-child">
@@ -35,6 +38,7 @@
             </li>
           </ul>
         </li>
+
       </ul>
     </div>
   </div>

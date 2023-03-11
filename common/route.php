@@ -37,6 +37,9 @@ $router->get('edit-service/{id}', [App\admin\controllers\ServiceController::clas
 $router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
 $router->get('detail-service/{id}', [App\admin\controllers\ServiceController::class, 'listServiceIdCate']);
+//Blog Service
+$router->get('service-blog', [App\admin\controllers\BlogServiceController::class, 'listBlogSv']);
+$router->get('add-blog-service', [App\admin\controllers\BlogServiceController::class, 'addBlogSv']);
 //giao-dien
 $router->get('contact-us', [UserDisplayController::class, 'index']);
 $router->get('edit-contact/{id}', [UserDisplayController::class, 'edit']);
