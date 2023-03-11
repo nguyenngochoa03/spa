@@ -18,8 +18,8 @@ $router->filter('auth', function(){
 //$router->get('/', function(){
 //    return "trang chủ";
 //});
-$router->get('/', [App\Controllers\HomeController::class, 'index']);
-$router->get('admin', [App\admin\controllers\HomeController::class, 'index']);
+$router->get('/admin', [App\Controllers\UsersController::class, 'dashboard']);
+$router->get('/admin-lỗian', [App\admin\controllers\HomeController::class, 'index']);
 //Category
 $router->get('add-category', [App\admin\controllers\CategoryController::class, 'addCategory']);
 $router->post('add-category-post', [App\admin\controllers\CategoryController::class, 'addCategoryPost']);
@@ -34,7 +34,8 @@ $router->post('add-service-post', [App\admin\controllers\ServiceController::clas
 $router->get('edit-service/{id}', [App\admin\controllers\CategoryController::class, 'editService']);
 $router->post('update-service/{id}', [App\admin\controllers\CategoryController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\CategoryController::class, 'deteleService']);
-
+//xin chào mọi người mình tên là Lợi,mọi người thường biết đến mình với biệt danh là  "Lợi Xoănnn".
+//TRọc cái cục cứt nhé
 //
 $router->get('/log-out', function () {
     $_SESSION["login"] = false;
@@ -44,14 +45,18 @@ $router->get('/log-out', function () {
 });
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('/', [App\Controllers\UsersController::class, 'index']);
-//$router->post('/', [App\Controllers\UsersController::class, 'index']);
-$router->get('/sign-up',[App\Controllers\UsersController::class,'signup']);
-$router->post('/sign-up',[App\Controllers\UsersController::class,'signup']);
+//$router->get('/',function (){
+//    return "xin chào Hoa ";
+//});
+$router->post('/', [App\Controllers\UsersController::class, 'index']);
+$router->get('sign-up',[App\Controllers\UsersController::class,'signup']);
+$router->post('sign-up',[App\Controllers\UsersController::class,'signup']);
 $router->get('user', [App\admin\controllers\UsersControlller::class, 'showUser']);
 $router->get('add-user', [App\admin\controllers\UsersControlller::class, 'addUser']);
-$router->get('delete-user-{id}', [App\admin\controllers\UsersControlller::class, 'deleteUser']);
-$router->get('update-user-{id}', [App\admin\controllers\UsersControlller::class, 'updateUser']);
-$router->post('update-user-post{id}', [App\admin\controllers\UsersControlller::class, 'postupdateUser']);
+$router->post('add-user', [App\admin\controllers\UsersControlller::class, 'addUser']);
+$router->get('delete-user/{id}', [App\admin\controllers\UsersControlller::class, 'deleteUser']);
+$router->get('update-user/{id}', [App\admin\controllers\UsersControlller::class, 'updateUser']);
+$router->post('update-user/{id}', [App\admin\controllers\UsersControlller::class, 'updateUser']);
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());

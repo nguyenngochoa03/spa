@@ -1,5 +1,4 @@
-@extends('admin.index_master_admin');
-@section('content')
+
   <div class="sign__content">
     <!-- registration form -->
     <form action="" method="POST" class="sign__form">
@@ -50,4 +49,3 @@
     <!-- registration form -->
   </div>
 
-@endsection

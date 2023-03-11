@@ -11,7 +11,7 @@ class HomeController extends BaseController{
 //        $this->account = new Account();
     }
     public function index(){
-        $this->render('home.index');
+        $this->render('users.signin');
     }
 
 }

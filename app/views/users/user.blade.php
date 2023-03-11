@@ -1,108 +1,148 @@
-@extends("admin.index_master_admin")
-@section("content")
-  <main class="main">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- main title -->
-        <div class="col-12">
-          <div class="main__title">
 
-        <!-- comments -->
-        <div class="col-12">
-          <div class="main__table-wrap">
-            <table class="main__table">
-              <thead>
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Số điện thoại</th>
-                <th>Email</th>
-                <th>Image</th>
-                <th>total_price</th>
-                <th>role_id</th>
-                <th>create_date</th>
-                <th>update_date</th>
-                <th>ACTIONS</th>
-              </tr>
-              </thead>
+@extends('admin.index_master_admin');
 
-              <tbody>
-              @foreach ($users as $item => $value)
-                <tr>
-                  <td>
-                    <div class="main__table-text">{{$value["id"]}}</div>
-                  </td>
-                  <td>
-                    <div class="main__table-text">{{$value["username"]}}</div>
-                  </td>
-                  <td>
-                    <div class="main__table-text">{{$value["password"]}}</div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["sdt"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["email"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["image"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["total_price"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["role_id"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["create_date"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-text"><a href="#">{{$value["update_date"]}}</a></div>
-                  </td>
-                  <td>
-                    <div class="main__table-btns">
-                      <a href="add-user" class="main__table-btn main__table-btn--view ">
-                        <i class="icon ion-ios-eye"></i>
-                      </a>
-                      <a href="update-user-{{$value['id']}}" class="main__table-btn main__table-btn--edit">
-                        <i class="icon ion-ios-create"></i>
-                      </a>
-                      <a href="delete-user-{{$value['id']}}" class="main__table-btn main__table-btn--delete ">
-                        <i class="icon ion-ios-trash"></i>
-                      </a>
+@section('content')
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="userDatatable global-shadow border-light-0 p-30 bg-white radius-xl w-100 mb-30">
+      <div class="table-responsive">
+        <table class="table mb-0 table-borderless">
+          <thead>
+          <tr class="userDatatable-header">
+            <th>
+              <div class="d-flex align-items-center">
+                <div class="custom-checkbox  check-all">
+                  <input class="checkbox" type="checkbox" id="check-44">
+
+                </div>
+              </div>
+            </th>
+            <th>
+              <span class="userDatatable-title">id</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">name</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">password</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">phone number</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">email</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">images</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">total_price</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">role_id</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">reate_date</span>
+            </th>
+            <th>
+              <span class="userDatatable-title">update_date</span>
+            </th>
+            <th>
+              <span class="userDatatable-title float-end">action</span>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach($users as $item => $value)
+          <tr>
+            <td>
+              <div class="d-flex">
+                <div class="userDatatable__imgWrapper d-flex align-items-center">
+                  <div class="checkbox-group-wrapper">
+                    <div class="checkbox-group d-flex">
+                      <div class="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
+                        <input class="checkbox" type="checkbox" id="check-grp-content12">
+                      </div>
                     </div>
-                  </td>
-                </tr>
-              @endforeach
+                  </div>
+<div>
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                <a href="https://demo.dashboardmarket.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c363334327137393030392e1c3b313d3530723f3331">{{$value->id}}</a>
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+               {{$value->name}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->password}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->sdt}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->email}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->image}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->total_price}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->role_id}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->create_date}}
+              </div>
+            </td>
+            <td>
+              <div class="userDatatable-content">
+                {{$value->update_date}}
+              </div>
+            </td>
 
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- end comments -->
-
-        <!-- paginator -->
-        <div class="col-12">
-          <div class="paginator-wrap">
-            <span>10 from 21 356</span>
-
-            <ul class="paginator">
-              <li class="paginator__item paginator__item--prev">
-                <a href="#"><i class="icon ion-ios-arrow-back"></i></a>
-              </li>
-              <li class="paginator__item"><a href="#">1</a></li>
-              <li class="paginator__item paginator__item--active"><a href="#">2</a></li>
-              <li class="paginator__item"><a href="#">3</a></li>
-              <li class="paginator__item"><a href="#">4</a></li>
-              <li class="paginator__item paginator__item--next">
-                <a href="#"><i class="icon ion-ios-arrow-forward"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- end paginator -->
+            <td>
+              <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+                <li>
+                  <a href="./add-user" class="view">
+                    <i class="uil uil-eye">Thêm</i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('update-user/'.$value->id)}}" class="edit">
+                    <i class="uil uil-edit">Sửa</i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('delete-user/'.$value->id)}}" class="remove">
+                    <i class="uil uil-trash-alt">Xóa</i>
+                  </a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          @endforeach
+          </tbody>
+        </table>
       </div>
-    </div>
-  </main>
 @endsection
