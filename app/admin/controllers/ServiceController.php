@@ -59,5 +59,9 @@ class ServiceController extends BaseController{
             }
         }
     }
+    public function deteleService($id){
+        $this->service->deleteService($id);
+        header('location: '.route('service-list'));
+    }
 }
 ?>

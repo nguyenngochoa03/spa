@@ -34,7 +34,7 @@ $router->post('add-service-post', [App\admin\controllers\ServiceController::clas
 $router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
 $router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
-
+$router->get('detail-service/{id}', [App\admin\controllers\ServiceController::class, 'listServiceIdCate']);
 //
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('dang-nhap', [AuthController::class, 'login']);
