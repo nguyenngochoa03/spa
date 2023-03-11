@@ -5,7 +5,7 @@ class UsersController extends BaseController{
   protected $user;
   public function __construct()
   {
-      $this->user = new Users;
+      $this->user = new Users();
   }
   public function getdangnhap(){
       if(isset($_POST['dangnhap'])){
@@ -19,7 +19,6 @@ class UsersController extends BaseController{
             $thongbao = 'Tài khoản không tồn tại';
         }
     }
-      }
   }
 }
 ?>
