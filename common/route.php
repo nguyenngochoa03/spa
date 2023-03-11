@@ -2,6 +2,8 @@
 use Phroute\Phroute\RouteCollector;
 use App\admin\controllers\HomeController;
 use App\Controllers\AuthController;
+use App\admin\controllers\UserDisplayController;
+
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
 
 $router = new RouteCollector();
@@ -35,9 +37,16 @@ $router->get('edit-service/{id}', [App\admin\controllers\ServiceController::clas
 $router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
 $router->get('detail-service/{id}', [App\admin\controllers\ServiceController::class, 'listServiceIdCate']);
-//
+//giao-dien
+$router->get('contact-us', [UserDisplayController::class, 'index']);
+$router->get('edit-contact/{id}', [UserDisplayController::class, 'edit']);
+$router->post('update-contact/{id}', [UserDisplayController::class, 'update']);
+
+
+//login -register
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('dang-nhap', [AuthController::class, 'login']);
+$router->get('dangnhap', [App\Controllers\UsersController::class, 'getdangnhap']);
 
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
