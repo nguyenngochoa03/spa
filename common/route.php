@@ -3,7 +3,7 @@ use Phroute\Phroute\RouteCollector;
 use App\admin\controllers\HomeController;
 use App\Controllers\AuthController;
 use App\admin\controllers\UserDisplayController;
-
+use App\admin\controllers\QuestionsController;
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
 
 $router = new RouteCollector();
@@ -42,8 +42,19 @@ $router->get('service-blog', [App\admin\controllers\BlogServiceController::class
 $router->get('add-blog-service', [App\admin\controllers\BlogServiceController::class, 'addBlogSv']);
 //giao-dien
 $router->get('contact-us', [UserDisplayController::class, 'index']);
+$router->get('quan-li-khach-hang', [UserDisplayController::class, 'index']);
+$router->get('instagram', [UserDisplayController::class, 'insta']);
 $router->get('edit-contact/{id}', [UserDisplayController::class, 'edit']);
+$router->get('edit-insta/{id}', [UserDisplayController::class, 'editInsta']);
 $router->post('update-contact/{id}', [UserDisplayController::class, 'update']);
+$router->post('update-insta/{id}', [UserDisplayController::class, 'updateInsta']);
+$router->get('questions', [QuestionsController::class, 'index']);
+
+$router->get('add-question', [QuestionsController::class, 'addQuestion']);
+$router->post('add-question', [QuestionsController::class, 'addQuestionPost']);
+$router->get('edit-question/{id}', [QuestionsController::class, 'editQuestion']);
+$router->get('update-question/{id}', [QuestionsController::class, 'updateQuestion']);
+$router->delete('delete-question/{id}', [QuestionsController::class, 'deleteQuestion']);
 
 
 //login -register
