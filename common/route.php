@@ -2,6 +2,8 @@
 use Phroute\Phroute\RouteCollector;
 use App\admin\controllers\HomeController;
 use App\Controllers\AuthController;
+use App\admin\controllers\UserDisplayController;
+
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];
 
 $router = new RouteCollector();
@@ -34,8 +36,13 @@ $router->post('add-service-post', [App\admin\controllers\ServiceController::clas
 $router->get('edit-service/{id}', [App\admin\controllers\CategoryController::class, 'editService']);
 $router->post('update-service/{id}', [App\admin\controllers\CategoryController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\CategoryController::class, 'deteleService']);
+//giao-dien
+$router->get('contact-us', [UserDisplayController::class, 'index']);
+$router->get('edit-contact/{id}', [UserDisplayController::class, 'edit']);
+$router->post('update-contact/{id}', [UserDisplayController::class, 'update']);
 
-//
+
+//login -register
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('dang-nhap', [AuthController::class, 'login']);
 $router->get('dangnhap', [App\Controllers\UsersController::class, 'getdangnhap']);

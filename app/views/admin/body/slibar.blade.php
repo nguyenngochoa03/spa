@@ -23,6 +23,18 @@
             </li>
           </ul>
         </li>
+        <li class="has-child">
+          <a href="#" class="">
+            <span class="nav-icon uil uil-table"></span>
+            <span class="menu-text">Quản lí giao diện</span>
+            <span class="toggle-icon"></span>
+          </a>
+          <ul>
+            <li class="">
+              <a href="{{route('contact-us')}}">Contact Us</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
