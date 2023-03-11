@@ -21,6 +21,9 @@
             <li class="">
               <a href="{{route('service-list')}}">Dịch vụ</a>
             </li>
+            <li class="">
+              <a href="{{route('service-blog')}}">Bài viết theo danh mục</a>
+            </li>
           </ul>
         </li>
         <li class="has-child">
