@@ -34,7 +34,7 @@ class BlogServiceController extends BaseController
         $this->render('admin.blogService.list', compact('blog', 'service', 'pages'));
     }
     public function listBlogSvIdCate($id){
-        $result = BlogService::countColumn();
+        $result = BlogService::countColumnId($id, 'id_service');
         $number = 0;
         if ($result != null && count($result) > 0){
             $number = $result[0]->number;
@@ -45,7 +45,7 @@ class BlogServiceController extends BaseController
             $current_page = $_GET['page'];
         }
         $index = ($current_page - 1) * 8;
-        $blog = BlogService::findAllColumn($id,'id_service');
+        $blog = BlogService::findAllColumnLimit($id,$index,'id_service');
         $service = $this->service->getAllService();
         $this->render('admin.blogService.list', compact('blog', 'service', 'pages'));
     }

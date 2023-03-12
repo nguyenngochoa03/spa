@@ -22,6 +22,12 @@ class boostrap extends BaseModel
         $model->setQuery($sql);
         return $model->loadAllRows();
     }
+    public static function countColumnId($id, $column){
+        $model = new static;
+        $sql = "SELECT COUNT(id) AS number FROM $model->table WHERE $column = $id";
+        $model->setQuery($sql);
+        return $model->loadAllRows();
+    }
     public static function findOne($id){
         $model = new static;
         $sql = "SELECT * FROM $model->table WHERE id = ?";
@@ -36,7 +42,7 @@ class boostrap extends BaseModel
     }
     public static function findAllColumnLimit($id, $index,$column){
         $model = new static;
-        $sql = "SELECT * FROM $model->table LIMIT $index,8 WHERE $column = '$id'";
+        $sql = "SELECT * FROM $model->table WHERE $column = '$id' LIMIT $index,8";
         $model->setQuery($sql);
         return $model->loadAllRows();
     }

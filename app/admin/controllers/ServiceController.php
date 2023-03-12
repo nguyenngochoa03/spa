@@ -29,7 +29,7 @@ class ServiceController extends BaseController{
         $this->render('admin.service.list', compact('service', 'category', 'pages'));
     }
     public function listServiceIdCate($id){
-        $result = $this->service->countColumn();
+        $result = $this->service->countColumnId($id, 'id_cate');
         $number = 0;
         if ($result != null && count($result) > 0){
             $number = $result[0]->number;
@@ -41,7 +41,7 @@ class ServiceController extends BaseController{
         }
         $index = ($current_page - 1) * 8;
         $category = $this->category->getAllCategory();
-        $service = $this->service->getAllLimit($index);
+        $service = $this->service->getAllLimitCateId($id, $index);
         $this->render('admin.service.list', compact('service', 'category','pages'));
     }
     public function addServicePost(){

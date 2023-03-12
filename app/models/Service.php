@@ -14,7 +14,7 @@ class Service extends BaseModel{
         return $this->loadAllRows();
     }
     public function getAllLimitCateId($id, $index){
-        $sql = "SELECT * FROM $this->table LIMIT $index,8 WHERE id = $id";
+        $sql = "SELECT * FROM $this->table WHERE id_cate = $id LIMIT $index,8";
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
@@ -45,6 +45,11 @@ class Service extends BaseModel{
     }
     public function countColumn(){
         $sql = "SELECT COUNT(id) AS number FROM $this->table";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
+    }
+    public function countColumnId($id, $column){
+        $sql = "SELECT COUNT(id) AS number FROM $this->table WHERE $column = $id";
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
