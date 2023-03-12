@@ -47,7 +47,17 @@
  <div class="form-group mb-20">
  <input type="text" name="namesv" class="form-control" placeholder="Tên dịch vụ">
  </div>
-
+ <div class="support-form__input-id">
+ <label>Danh mục</label>
+ <div class="dm-select">
+ <select name="catesv" class="select-search form-control ">
+ <?php $__currentLoopData = $category; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $ct): $loop = $this->incrementLoopIndices();  ?>
+ <option value="<?php echo \htmlentities($ct->id??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($ct->name??'', ENT_QUOTES, 'UTF-8', false); ?></option>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </select>
+ </div>
+ </div>
  <div class="button-group d-flex pt-25">
  <input type="submit" name="add-new" class="btn btn-primary btn-default btn-squared text-capitalize" value="Add New">
  <button type="reset" class="btn btn-light btn-default btn-squared fw-400 text-capitalize b-light color-light" data-bs-dismiss="modal">Cancel</button>
@@ -95,13 +105,13 @@
  <div class="support-form__input">
  <div class="d-flex flex-wrap">
  <div class="support-form__input-id">
- <label>Id:</label>
+ <label>Cate:</label>
  <div class="dm-select ">
  <select name="select-search" class="select-search form-control ">
  <option value="0">All</option>
- <?php $__currentLoopData = $service; $this->addLoop($__currentLoopData);$this->getFirstLoop();
- foreach($__currentLoopData as $sv): $loop = $this->incrementLoopIndices();  ?>
- <option value="<?php echo \htmlentities($sv->id??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($sv->name??'', ENT_QUOTES, 'UTF-8', false); ?></option>
+ <?php $__currentLoopData = $category; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $ct): $loop = $this->incrementLoopIndices();  ?>
+ <option value="<?php echo \htmlentities($ct->id??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($ct->name??'', ENT_QUOTES, 'UTF-8', false); ?></option>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </select>
  </div>
@@ -194,16 +204,16 @@
  <td>
  <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
  <li>
- <a href="<?php echo \htmlentities(route('detail-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button class="btn btn-info btn-default btn-squared ">Blog
- </button></a>
+ <button class="btn btn-info btn-default btn-squared" onclick="location.href='<?php echo \htmlentities(route('detail-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>'">Detail
+ </button>
  </li>
  <li>
- <a href="<?php echo \htmlentities(route('edit-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button class="btn btn-warning btn-default btn-squared ">Edit
- </button></a>
+ <button class="btn btn-warning btn-default btn-squared" onclick="location.href='<?php echo \htmlentities(route('edit-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>'">Edit
+ </button>
  </li>
  <li>
- <a href="<?php echo \htmlentities(route('delete-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>" onclick="return confirm('Bạn có muốn xóa')"><button class="btn btn-danger btn-default btn-squared ">Delete
- </button></a>
+ <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href='<?php echo \htmlentities(route('delete-service/'.$sv->id)??'', ENT_QUOTES, 'UTF-8', false); ?>' : ''">Delete
+ </button>
  </a>
  </li>
  </ul>

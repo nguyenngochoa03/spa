@@ -45,5 +45,6 @@ class Users extends BaseModel{
         return $this->loadRow();
     }
 }
+
 ?>
 

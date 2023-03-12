@@ -174,15 +174,15 @@
                     <td>
                       <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
                         <li>
-                          <button class="btn btn-info btn-default btn-squared" onclick="location.href={{route('detail-category/'.$ct->id)}}">Detail
+                          <button class="btn btn-info btn-default btn-squared" onclick="location.href='{{route('detail-category/'.$ct->id)}}'">Detail
                           </button>
                         </li>
                         <li>
-                          <button class="btn btn-warning btn-default btn-squared" onclick="location.href={{route('edit-category/'.$ct->id)}}">Edit
+                          <button class="btn btn-warning btn-default btn-squared" onclick="location.href='{{route('edit-category/'.$ct->id)}}'">Edit
                           </button>
                         </li>
                         <li>
-                          <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href={{route('edit-category/'.$ct->id)}}">Delete
+                          <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href='{{route('delete-category/'.$ct->id)}}' : ''">Delete
                           </button>
                           </a>
                         </li>
@@ -227,5 +227,19 @@
     </div>
   </div>
 @endsection
+@push('scripts')
+@if(isset($_SESSION['success']) && isset($_GET['msg']))
+  <script>
+    Swal.fire(
+      'Thêm mới!',
+      '{{$_SESSION['success']}}',
+      'success'
+    )
+    window.setTimeout(function(){
+      window.location.href = '{{ route('service-category') }}';
+    },1000)
+  </script>
+@endif
+@endpush
 
 
