@@ -9,6 +9,7 @@
   <title>HexaDash</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   @include('admin.body.css');
+  @stack('styles');
 </head>
 <body class="layout-light side-menu">
 <div class="mobile-search">
@@ -107,7 +108,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgYKHZB_QKKLWfIRaYPCadza3nhTAbv7c"></script>
 
 @include('admin.body.js');
-
+@stack('scripts');
 </body>
 
 <!-- Mirrored from demo.dashboardmarket.com/hexadash-html/ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Jan 2023 10:48:03 GMT -->

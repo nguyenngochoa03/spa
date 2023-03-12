@@ -24,4 +24,12 @@ function redirect($key,$msg,$route) {
     }
     header('location:'.BASE_URL.$route."?msg=".$key);die;
 }
+if (!function_exists('dd')) {
+    function dd()
+    {
+        echo '<pre>';
+        array_map(function($x) {print_r($x);}, func_get_args());
+        die;
+    }
+}
 
