@@ -32,7 +32,7 @@
 
               <span class="sign__delimiter">or</span>
 
-              <span class="sign__text">Don't have an account? <a href="sign-up">Sign up!</a></span>
+              <span class="sign__text">Don't have an account? <a href="{{route('sign-up')}}">Sign up!</a></span>
 
               <span class="sign__text"><a href="forgot.html">Forgot password?</a></span>
             </form>
