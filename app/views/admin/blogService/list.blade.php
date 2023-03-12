@@ -66,12 +66,12 @@
               <div class="support-form__input">
                 <div class="d-flex flex-wrap">
                   <div class="support-form__input-id">
-                    <label>Id:</label>
+                    <label>Service: </label>
                     <div class="dm-select ">
                       <select name="select-search" class="select-search form-control ">
                         <option value="0">All</option>
-                        @foreach($category as $ct)
-                          <option value="{{$ct->id}}">{{$ct->name}}</option>
+                        @foreach($service as $sv)
+                          <option value="{{$sv->id}}">{{$sv->name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -113,9 +113,6 @@
                       <span class="userDatatable-title">Title</span>
                     </th>
                     <th>
-                      <span class="userDatatable-title">Meta</span>
-                    </th>
-                    <th>
                       <span class="userDatatable-title">Create Date</span>
                     </th>
                     <th>
@@ -127,7 +124,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($category as $key => $ct)
+                  @foreach($blog as $key => $bl)
                     <tr>
                       <td class="pe-0">
                         <div class="d-flex">
@@ -154,23 +151,39 @@
                       </td>
                       <td>
                         <div class="userDatatable-content--subject">
-                          {{$ct->name}}
+                          @foreach($service as $sv)
+                            <?php echo $sv->id == $bl->id_service ? $sv->name : ''?>
+                          @endforeach
+                        </div>
+                      </td>
+                      <td>
+                        <div class="userDatatable-content--subject">
+                          {{$bl->title}}
+                        </div>
+                      </td>
+                      <td>
+                        <div class="userDatatable-content--subject">
+                          {{$bl->create_date}}
+                        </div>
+                      </td>
+                      <td>
+                        <div class="userDatatable-content--subject">
+                          {{$bl->create_update}}
                         </div>
                       </td>
                       <td>
                         <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+{{--                          <li>--}}
+{{--                            <button class="btn btn-info btn-default btn-squared" onclick="location.href='{{route('detail-blog-service/'.$bl->id)}}'">Detail--}}
+{{--                            </button>--}}
+{{--                          </li>--}}
                           <li>
-                            <button class="btn btn-info btn-default btn-squared" onclick="location.href='{{route('detail-category/'.$ct->id)}}'">Detail
+                            <button class="btn btn-warning btn-default btn-squared" onclick="location.href='{{route('edit-blog-service/'.$bl->id)}}'">Edit
                             </button>
                           </li>
                           <li>
-                            <button class="btn btn-warning btn-default btn-squared" onclick="location.href='{{route('edit-category/'.$ct->id)}}'">Edit
+                            <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href='{{route('delete-blog-service/'.$bl->id)}}' : ''">Delete
                             </button>
-                          </li>
-                          <li>
-                            <button class="btn btn-danger btn-default btn-squared" onclick="return confirm('Bạn có muốn xóa?') == true ? location.href='{{route('delete-category/'.$ct->id)}}' : ''">Delete
-                            </button>
-                            </a>
                           </li>
                         </ul>
                       </td>

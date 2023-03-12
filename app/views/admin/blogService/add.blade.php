@@ -23,7 +23,37 @@
         </div>
       </div>
     </div>
+
     <div class="form-element">
+      @if(isset($_SESSION['errors']) && isset($_GET['msg']))
+        <div class="alert">
+          @foreach($_SESSION['errors'] as $er)
+            <div
+              class="alert alert-warning alert-dismissible fade show"
+              role="alert"
+            >
+              <div class="alert-content">
+                <p>
+                  {{$er}}
+                </p>
+                <button
+                  type="button"
+                  class="btn-close text-capitalize"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <img
+                    src="{{route(''.'app/views/admin/public/assets/img/svg/x.svg')}}"
+                    alt="x"
+                    class="svg"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+            </div><br>
+          @endforeach
+        </div>
+      @endif
       <div class="row">
         <div class="col-lg-12">
           <div class="card card-default card-md mb-4">
@@ -31,128 +61,19 @@
               <h6>Thêm mới bài viết</h6>
             </div>
             <div class="card-body py-md-25">
-              <form action="#">
+              <form action="{{route('add-blog-service-post')}}" method="post" enctype="multipart/form-data">
                 <div class="row">
-{{--                  <div class="col-md-4">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a1"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Three Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a1"--}}
-{{--                        placeholder="One of Three Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-4">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a2"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Three Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a2"--}}
-{{--                        placeholder="One of Three Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-4">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a3"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Three Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a3"--}}
-{{--                        placeholder="One of Three Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-3">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a4"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Four Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a4"--}}
-{{--                        placeholder="One of Four Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-3">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a5"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Four Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a5"--}}
-{{--                        placeholder="One of Four Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-3">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a6"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Four Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a6"--}}
-{{--                        placeholder="One of Four Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-3">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a7"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Four Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a7"--}}
-{{--                        placeholder="One of Four Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
-{{--                  <div class="col-md-6">--}}
-{{--                    <div class="form-group">--}}
-{{--                      <label--}}
-{{--                        for="a8"--}}
-{{--                        class="il-gray fs-14 fw-500 align-center mb-10"--}}
-{{--                      >One of Two Columns</label--}}
-{{--                      >--}}
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a8"--}}
-{{--                        placeholder="One of Two Columns"--}}
-{{--                      />--}}
-{{--                    </div>--}}
-{{--                  </div>--}}
+                  <div class="support-form__input-id">
+                    <label>Service: </label>
+                    <div class="dm-select ">
+                      <select name="serbl" class="select-search form-control ">
+                        <option value="0">None</option>
+                        @foreach($service as $sv)
+                          <option value="{{$sv->id}}">{{$sv->name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label
@@ -161,24 +82,33 @@
                       >Tiêu đề bài viết</label
                       >
                       <input
+                        name="titlebl"
                         type="text"
                         class="form-control ih-medium ip-light radius-xs b-light px-15"
                         id="a9"
-                        placeholder="One of Two Columns"
+                        placeholder="Nhập tiêu đề"
                       />
                     </div>
-                    <div class="form-group">
-                      <label
-                        for="a9"
-                        class="il-gray fs-14 fw-500 align-center mb-10"
-                      >Tiêu đề bài viết</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control ih-medium ip-light radius-xs b-light px-15"
-                        id="a9"
-                        placeholder="One of Two Columns"
-                      />
+                    <div class="col-lg-6">
+                      <div class="card card-default card-md mb-4">
+                        <div class="card-header  py-20">
+                          <h6>Image</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="dm-tag-wrap">
+                            <div class="dm-upload">
+                              <div class="dm-upload__button">
+                                <a href="javascript:void(0)" class="btn btn-lg btn-outline-lighten btn-upload" onclick="$('#upload-1').click()"> <img class="svg" src="{{route(''.'app/views/admin/public/assets/img/svg/upload.svg')}}" alt="upload"> Click to Upload</a>
+                                <input name="upload" type="file"  class="upload-one" id="upload-1">
+                              </div>
+                              <div class="dm-upload__file">
+                                <ul>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group">
                       <label
@@ -186,13 +116,17 @@
                         class="il-gray fs-14 fw-500 align-center mb-10"
                       >Nội dung bài viết</label
                       >
-                      <textarea id="ckeditor1" class="form-control ih-medium ip-light radius-xs b-light px-15"></textarea>
-{{--                      <input--}}
-{{--                        type="text"--}}
-{{--                        class="form-control ih-medium ip-light radius-xs b-light px-15"--}}
-{{--                        id="a9"--}}
-{{--                        placeholder="One of Two Columns"--}}
-{{--                      />--}}
+                      <textarea name="contentbl" id="content-blog" cols="20" rows="20"></textarea>
+                    </div>
+                    <div
+                      class="button-group d-flex pt-25 justify-content-md-end justify-content-start"
+                    >
+                      <button
+                        class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2 btn-sm"
+                        type="submit" name="sb-blog"
+                      >
+                        Thêm
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -206,3 +140,23 @@
 </div>
 @endsection
 
+@push('scripts')
+  <script >
+    CKEDITOR.replace( 'content-blog', {
+      filebrowserUploadUrl: './app/views/ckeditor/uploadBlogSv.php'
+    } );
+  </script>
+
+  @if(isset($_SESSION['success']) && isset($_GET['msg']))
+    <script>
+      Swal.fire(
+        'Thêm mới!',
+        '{{$_SESSION['success']}}',
+        'success'
+      )
+      window.setTimeout(function(){
+        window.location.href = '{{ route('add-blog-service') }}';
+      },1000)
+    </script>
+  @endif
+@endpush
