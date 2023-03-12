@@ -73,11 +73,11 @@ $router->delete('delete-question/{id}', [QuestionsController::class, 'deleteQues
 
 //login -register
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
-$router->get('/', [App\Controllers\UsersController::class, 'index']);
+$router->get('sign-in', [App\Controllers\UsersController::class, 'index']);
 //$router->get('/',function (){
 //    return "xin chào Hoa ";
 //});
-$router->post('/', [App\Controllers\UsersController::class, 'index']);
+$router->post('sign-in', [App\Controllers\UsersController::class, 'index']);
 $router->get('sign-up',[App\Controllers\UsersController::class,'signup']);
 $router->post('sign-up',[App\Controllers\UsersController::class,'signup']);
 $router->get('user', [App\admin\controllers\UsersControlller::class, 'showUser']);

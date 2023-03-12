@@ -61,15 +61,11 @@ class UsersController extends BaseController
     public function index()
     {
         $err = [];
-
-
-
-
-//        if (isset($_SESSION["login"])) {
-//            if ($_SESSION["login"]) {
-//                route("dashboard");
-//            }
-//        }
+        if (isset($_SESSION["login"])) {
+            if ($_SESSION["login"]) {
+                route("dashboard");
+            }
+        }
 
         if (isset($_POST["btn-login"])) {
             $email = $this->user->index();
@@ -84,14 +80,14 @@ class UsersController extends BaseController
 
                     if ($_POST["email"] == $value->email && $_POST["password"] == $value->password) {
                         $_SESSION["username"] = $value->name;
-//                        $_SESSION["login"] = true;
-//                        if (isset($_POST["remember"])) {
-//                            setcookie("email", $_POST["email"], time() + 86400, '/');
-//                            setcookie("pass", $_POST["password"], time() + 86400, '/');
-//                        }
+                        $_SESSION["login"] = true;
+                        if (isset($_POST["remember"])) {
+                            setcookie("email", $_POST["email"], time() + 86400, '/');
+                            setcookie("pass", $_POST["password"], time() + 86400, '/');
+                        }
                         if($value->role_id==0){
-//                            header('location:./admin');
-//                            route('hello');
+                            header('location:./admin');
+                            route('hello');
                             redirect('success','Đăng nhập thành công','admin');
                         }
                         else{
@@ -112,9 +108,9 @@ class UsersController extends BaseController
     public function dashboard()
 
     {
-//        if ($_SESSION["login"] == false) {
-//            route("");
-//        }
+        if ($_SESSION["login"] == false) {
+            route("");
+        }
        return $this->render('admin.home.adminIndex');
     }
 }
