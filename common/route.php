@@ -36,10 +36,15 @@ $router->post('add-service-post', [App\admin\controllers\ServiceController::clas
 $router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
 $router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
 $router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
-$router->get('detail-service/{id}', [App\admin\controllers\ServiceController::class, 'listServiceIdCate']);
+$router->get('detail-service/{id}', [App\admin\controllers\BlogServiceController::class, 'listBlogSvIdCate']);
 //Blog Service
 $router->get('service-blog', [App\admin\controllers\BlogServiceController::class, 'listBlogSv']);
 $router->get('add-blog-service', [App\admin\controllers\BlogServiceController::class, 'addBlogSv']);
+$router->post('add-blog-service-post', [App\admin\controllers\BlogServiceController::class, 'addBlogSvPost']);
+$router->get('edit-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'editBlogSv']);
+$router->post('update-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'updateBlogSvPost']);
+
+$router->get('delete-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'deleteBlogSv']);
 //giao-dien
 $router->get('contact-us', [UserDisplayController::class, 'index']);
 $router->get('quan-li-khach-hang', [UserDisplayController::class, 'index']);

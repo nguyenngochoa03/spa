@@ -227,5 +227,19 @@
     </div>
   </div>
 @endsection
+@push('scripts')
+@if(isset($_SESSION['success']) && isset($_GET['msg']))
+  <script>
+    Swal.fire(
+      'Thêm mới!',
+      '{{$_SESSION['success']}}',
+      'success'
+    )
+    window.setTimeout(function(){
+      window.location.href = '{{ route('service-category') }}';
+    },1000)
+  </script>
+@endif
+@endpush
 
 

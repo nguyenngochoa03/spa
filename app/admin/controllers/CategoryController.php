@@ -24,7 +24,7 @@ class CategoryController extends BaseController{
             }else{
                 $result = $this->category->addCategory(NULL, $_POST['namect']);
                 if ($result){
-                    redirect('success', 'success', 'service-category');
+                    redirect('success', 'Thêm mới thành công', 'service-category');
                 }
             }
         }
@@ -44,7 +44,7 @@ class CategoryController extends BaseController{
             }else{
                 $result = $this->category->updateCategory($id, $_POST['namect']);
                 if ($result){
-                    redirect('success', 'success', 'edit-category/'.$id);
+                    redirect('success', 'Cập nhật thành công', 'edit-category/'.$id);
                 }
             }
         }
