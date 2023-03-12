@@ -41,13 +41,24 @@
             </li>
           </ul>
         </li>
+        <li class="has-child">
+          <a href="#" class="">
+            <span class="nav-icon uil uil-table"></span>
+            <span class="menu-text">Quản lí người dùng</span>
+            <span class="toggle-icon"></span>
+          </a>
+          <ul>
+            <li class="">
+              <a href="{{route('user')}}">Người Dùng</a>
+            </li>
+          </ul>
         <li class="">
           <a href="{{route('questions')}}">
             <span class="nav-icon uil uil-clipboard-notes"></span>
             <span class="menu-text">Câu hỏi thường gặp</span>
           </a>
         </li>
-      </ul>
+        </ul>
     </div>
   </div>
 </div>
