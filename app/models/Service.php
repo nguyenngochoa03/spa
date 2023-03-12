@@ -8,6 +8,16 @@ class Service extends BaseModel{
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
+    public function getAllLimit($index){
+        $sql = "SELECT * FROM $this->table LIMIT $index,8";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
+    }
+    public function getAllLimitCateId($id, $index){
+        $sql = "SELECT * FROM $this->table LIMIT $index,8 WHERE id = $id";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
+    }
     public function getAllCateId($id){
         $sql = "SELECT * FROM $this->table WHERE id_cate = ?";
         $this->setQuery($sql);
@@ -32,6 +42,11 @@ class Service extends BaseModel{
         $sql = "DELETE FROM $this->table WHERE id = ?";
         $this->setQuery($sql);
         return $this->execute([$id]);
+    }
+    public function countColumn(){
+        $sql = "SELECT COUNT(id) AS number FROM $this->table";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
     }
 
 }

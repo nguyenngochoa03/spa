@@ -64,7 +64,7 @@
               <form action="{{route('add-blog-service-post')}}" method="post" enctype="multipart/form-data">
                 <div class="row">
                   <div class="support-form__input-id">
-                    <label>Service: </label>
+                    <label>Dịch vụ: </label>
                     <div class="dm-select ">
                       <select name="serbl" class="select-search form-control ">
                         <option value="0">None</option>
@@ -150,13 +150,13 @@
   @if(isset($_SESSION['success']) && isset($_GET['msg']))
     <script>
       Swal.fire(
-        'Thêm mới!',
+        'Thông báo!',
         '{{$_SESSION['success']}}',
         'success'
       )
       window.setTimeout(function(){
-        window.location.href = '{{ route('add-blog-service') }}';
-      },1000)
+        window.location.href = '{{ route('service-blog') }}';
+      },1500)
     </script>
   @endif
 @endpush

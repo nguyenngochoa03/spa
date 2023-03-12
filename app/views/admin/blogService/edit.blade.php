@@ -161,12 +161,12 @@
   @if(isset($_SESSION['success']) && isset($_GET['msg']))
     <script>
       Swal.fire(
-        'Thêm mới!',
+        'Thông báo!',
         '{{$_SESSION['success']}}',
         'success'
       )
       window.setTimeout(function(){
-        window.location.href = '{{ route('edit-blog-service/' . $blog->id) }}';
+        window.location.href = '{{ route('service-blog') }}';
       },1000)
     </script>
   @endif
