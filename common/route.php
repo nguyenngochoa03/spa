@@ -67,7 +67,7 @@ $router->get('questions', [QuestionsController::class, 'index']);
 $router->get('add-question', [QuestionsController::class, 'addQuestion']);
 $router->post('add-question', [QuestionsController::class, 'addQuestionPost']);
 $router->get('edit-question/{id}', [QuestionsController::class, 'editQuestion']);
-$router->get('update-question/{id}', [QuestionsController::class, 'updateQuestion']);
+$router->post('edit-question/{id}', [QuestionsController::class, 'updateQuestion']);
 $router->get('delete-question/{id}', [QuestionsController::class, 'deleteQuestion']);
 
 
