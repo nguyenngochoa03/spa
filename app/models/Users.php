@@ -7,10 +7,10 @@ class Users extends BaseModel{
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
-    public function signup($name,$password,$sdt,$email,$image,$total_price,$create_date,$update_date){
+    public function signup($name,$password,$sdt,$email){
         $create_date=date('Y-m-d H:i a');
         $update_date=date('Y-m-d H:i a');
-        $sql="INSERT INTO $this->table VALUES (null,'$name','$password','$sdt','$email','$image','$total_price','1','$create_date','$update_date')";
+        $sql="INSERT INTO $this->table VALUES (null,'$name','$password','$sdt','$email',NULL,NULL,'1')";
         $this->setQuery($sql);
         return $this->execute();
 
