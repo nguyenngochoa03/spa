@@ -1,4 +1,5 @@
 <?php
+require_once '../../../env.php';
 if(isset($_FILES['upload']['name'])){
   $target_dir = "../../../public/upload/questions/";
   $name = time() .$_FILES["upload"]["name"];
@@ -16,7 +17,7 @@ if(isset($_FILES['upload']['name'])){
     $funcNum = $_GET['CKEditorFuncNum'] ;
     $CKEditor = $_GET['CKEditor'] ;
     $langCode = $_GET['langCode'] ;
-    $url = 'public/upload/questions/'.$name;
+    $url = route('').'public/upload/questions/'.$name;
     $message = '';
     echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
     echo "<script>

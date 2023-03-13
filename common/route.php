@@ -42,10 +42,10 @@ $router->get('/log-out', function () {
     setcookie("pass",$_POST["password"],time()-86401,'/');
     header("location:./");
 });
-$router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
-$router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
-$router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
-$router->get('detail-service/{id}', [App\admin\controllers\BlogServiceController::class, 'listBlogSvIdCate']);
+//$router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
+//$router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
+//$router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
+//$router->get('detail-service/{id}', [App\admin\controllers\BlogServiceController::class, 'listBlogSvIdCate']);
 //Blog Service
 $router->get('service-blog', [App\admin\controllers\BlogServiceController::class, 'listBlogSv']);
 $router->get('add-blog-service', [App\admin\controllers\BlogServiceController::class, 'addBlogSv']);
@@ -67,9 +67,9 @@ $router->get('questions', [QuestionsController::class, 'index']);
 $router->get('add-question', [QuestionsController::class, 'addQuestion']);
 $router->post('add-question', [QuestionsController::class, 'addQuestionPost']);
 $router->get('edit-question/{id}', [QuestionsController::class, 'editQuestion']);
-$router->get('update-question/{id}', [QuestionsController::class, 'updateQuestion']);
-$router->delete('delete-question/{id}', [QuestionsController::class, 'deleteQuestion']);
-
+$router->post('update-question/{id}', [QuestionsController::class, 'updateQuestion']);
+$router->get('delete-question/{id}', [QuestionsController::class, 'deleteQuestion']);
+$router->get('blog-question',[QuestionsController::class, 'blogQuestion']);
 
 //login -register
 $router->get('home', [App\Controllers\HomeController::class, 'index']);

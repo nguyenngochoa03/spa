@@ -54,4 +54,8 @@ class QuestionsController extends BaseController
     public function deleteQuestion($id){
 
     }
+    public function blogQuestion(){
+        $questions = questions::GetAll();
+        $this->render('admin.UserDisplay.questions.blogQuestion',compact('questions'));
+    }
 }
