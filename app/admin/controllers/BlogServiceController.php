@@ -18,16 +18,36 @@ class BlogServiceController extends BaseController
 
     public function listBlogSv()
     {
-        $blog = BlogService::GetAll();
+        $result = BlogService::countColumn();
+        $number = 0;
+        if ($result != null && count($result) > 0){
+            $number = $result[0]->number;
+        }
+        $pages = ceil($number / 8);
+        $current_page = 1;
+        if (isset($_GET['page'])){
+            $current_page = $_GET['page'];
+        }
+        $index = ($current_page - 1) * 8;
+        $blog = BlogService::GetAllLimit($index);
         $service = $this->service->getAllService();
-        $this->render('admin.blogService.list', compact('blog', 'service'));
+        $this->render('admin.blogService.list', compact('blog', 'service', 'pages'));
     }
     public function listBlogSvIdCate($id){
-        $blog = BlogService::findAllColumn($id, 'id_service');
-//        var_dump($blog);
-//        die();
+        $result = BlogService::countColumnId($id, 'id_service');
+        $number = 0;
+        if ($result != null && count($result) > 0){
+            $number = $result[0]->number;
+        }
+        $pages = ceil($number / 8);
+        $current_page = 1;
+        if (isset($_GET['page'])){
+            $current_page = $_GET['page'];
+        }
+        $index = ($current_page - 1) * 8;
+        $blog = BlogService::findAllColumnLimit($id,$index,'id_service');
         $service = $this->service->getAllService();
-        $this->render('admin.blogService.list', compact('blog', 'service'));
+        $this->render('admin.blogService.list', compact('blog', 'service', 'pages'));
     }
 
     public function addBlogSv()
@@ -70,7 +90,7 @@ class BlogServiceController extends BaseController
                 } else {
                     if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $date = date("Y-m-d h:i:sa");
+                        $date = date("Y-m-d");
                         $result = BlogService::addItems([
                             "id" => NULL,
                             "id_service" => $_POST['serbl'],
@@ -82,7 +102,7 @@ class BlogServiceController extends BaseController
                         ]);
                     }
                     if ($result) {
-                        redirect('success', "Cập nhật thành công!", 'add-blog-service');
+                        redirect('success', "Thêm mới thành công!", 'add-blog-service');
                     }
                 }
             }
@@ -127,7 +147,7 @@ class BlogServiceController extends BaseController
                 } else {
                     if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $date = date("Y-m-d h:i:sa");
+                        $date = date("Y-m-d");
                         $result = BlogService::updatefind($id,[
                             "id_service" => $_POST['serbl'],
                             "content" => $_POST['contentbl'],
@@ -148,7 +168,7 @@ class BlogServiceController extends BaseController
                     redirect('errors', $errors, 'edit-blog-service/'.$id);
                 }else{
                     date_default_timezone_set("Asia/Ho_Chi_Minh");
-                    $date = date("Y-m-d h:i:sa");
+                    $date = date("Y-m-d");
                     $result = BlogService::updatefind($id,[
                         "id_service" => $_POST['serbl'],
                         "content" => $_POST['contentbl'],
@@ -165,6 +185,10 @@ class BlogServiceController extends BaseController
     public function deleteBlogSv($id){
         BlogService::delete($id);
         header('location: '.route('service-blog'));
+    }
+    public function detailBlogSv($id){
+        $blog = BlogService::findOne($id);
+        $this->render('admin.blogService.detail', compact('blog'));
     }
 }
 ?>

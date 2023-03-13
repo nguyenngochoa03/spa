@@ -52,8 +52,9 @@ $router->get('add-blog-service', [App\admin\controllers\BlogServiceController::c
 $router->post('add-blog-service-post', [App\admin\controllers\BlogServiceController::class, 'addBlogSvPost']);
 $router->get('edit-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'editBlogSv']);
 $router->post('update-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'updateBlogSvPost']);
-
 $router->get('delete-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'deleteBlogSv']);
+$router->get('detail-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'detailBlogSv']);
+
 //giao-dien
 $router->get('contact-us', [UserDisplayController::class, 'index']);
 $router->get('quan-li-khach-hang', [UserDisplayController::class, 'index']);

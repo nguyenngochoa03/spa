@@ -13,14 +13,36 @@ class ServiceController extends BaseController{
         $this->category = new Category();
     }
     public function listService(){
-        $service = $this->service->getAllService();
+        $result = $this->service->countColumn();
+        $number = 0;
+        if ($result != null && count($result) > 0){
+            $number = $result[0]->number;
+        }
+        $pages = ceil($number / 8);
+        $current_page = 1;
+        if (isset($_GET['page'])){
+            $current_page = $_GET['page'];
+        }
+        $index = ($current_page - 1) * 8;
         $category = $this->category->getAllCategory();
-        $this->render('admin.service.list', compact('service', 'category'));
+        $service = $this->service->getAllLimit($index);
+        $this->render('admin.service.list', compact('service', 'category', 'pages'));
     }
     public function listServiceIdCate($id){
+        $result = $this->service->countColumnId($id, 'id_cate');
+        $number = 0;
+        if ($result != null && count($result) > 0){
+            $number = $result[0]->number;
+        }
+        $pages = ceil($number / 8);
+        $current_page = 1;
+        if (isset($_GET['page'])){
+            $current_page = $_GET['page'];
+        }
+        $index = ($current_page - 1) * 8;
         $category = $this->category->getAllCategory();
-        $service = $this->service->getAllCateId($id);
-        $this->render('admin.service.list', compact('service', 'category'));
+        $service = $this->service->getAllLimitCateId($id, $index);
+        $this->render('admin.service.list', compact('service', 'category','pages'));
     }
     public function addServicePost(){
         if (isset($_POST['add-new'])){
@@ -33,7 +55,7 @@ class ServiceController extends BaseController{
             }else{
                 $result = $this->service->addService(NULL, $_POST['catesv'], $_POST['namesv']);
                 if ($result){
-                    redirect('success', 'success', 'service-list');
+                    redirect('success', 'Thêm mới thành công', 'service-list');
                 }
             }
         }
@@ -54,7 +76,7 @@ class ServiceController extends BaseController{
             }else{
                 $result = $this->service->updateService($id, $_POST['catesv'], $_POST['namesv']);
                 if ($result){
-                    redirect('success', 'success', 'edit-service/'.$id);
+                    redirect('success', 'Cập nhật thành công', 'edit-service/'.$id);
                 }
             }
         }

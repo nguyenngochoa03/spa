@@ -55,33 +55,7 @@
                   @endforeach
                 </div>
               @endif
-              @if(isset($_SESSION['success']) && isset($_GET['msg']))
-                <div class="alert">
-                  <div
-                    class="alert alert-warning alert-dismissible fade show"
-                    role="alert"
-                  >
-                    <div class="alert-content">
-                      <p>
-                        Cập nhật thành công
-                      </p>
-                      <button
-                        type="button"
-                        class="btn-close text-capitalize"
-                        data-bs-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <img
-                          src="{{route(''.'app/views/admin/public/assets/img/svg/x.svg')}}"
-                          alt="x"
-                          class="svg"
-                          aria-hidden="true"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              @endif
+
               <div class="card-body pb-md-50">
                 <form action="{{route('update-service/'.$service->id)}}" method="post">
                   <div class="row mx-n15">
@@ -116,5 +90,19 @@
     </div>
   </div>
 @endsection
+@push('scripts')
+  @if(isset($_SESSION['success']) && isset($_GET['msg']))
+    <script>
+      Swal.fire(
+        'Thông báo!',
+        '{{$_SESSION['success']}}',
+        'success'
+      )
+      window.setTimeout(function(){
+        window.location.href = '{{ route('service-list') }}';
+      },1000)
+    </script>
+  @endif
+@endpush
 
 

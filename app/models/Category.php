@@ -8,6 +8,11 @@ class Category extends BaseModel{
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
+    public function getAllLimit($index){
+        $sql = "SELECT * FROM $this->table LIMIT $index,8";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
+    }
     public function getOneCategory($id){
         $sql = "SELECT * FROM $this->table WHERE id = ?";
         $this->setQuery($sql);
@@ -27,6 +32,11 @@ class Category extends BaseModel{
         $sql = "DELETE FROM $this->table WHERE id = ?";
         $this->setQuery($sql);
         return $this->execute([$id]);
+    }
+    public function countColumn(){
+        $sql = "SELECT COUNT(id) AS number FROM $this->table";
+        $this->setQuery($sql);
+        return $this->loadAllRows();
     }
 }
 ?>
