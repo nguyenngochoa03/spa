@@ -18,22 +18,6 @@
       <div class="sign__group">
         <input type="email" name="email" class="sign__input" placeholder="Email">
       </div>
-
-      <div class="sign__group">
-        <input type="file" name="image" class="sign__input" placeholder="image">
-      </div>
-
-      <div class="sign__group">
-        <input type="text" name="total_price" class="sign__input" placeholder="total_price">
-      </div>
-
-      <div class="sign__group">
-        <input type="text" name="create_date" class="sign__input" placeholder="create_date">
-      </div>
-
-      <div class="sign__group">
-        <input type="text" name="update_date" class="sign__input" placeholder="update_date">
-      </div>
       <div class="sign__group sign__group--checkbox">
         <input id="remember" name="remember" type="checkbox" checked="checked">
         <label for="remember">I agree to the <a href="#">Privacy Policy</a></label>

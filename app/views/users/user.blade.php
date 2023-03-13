@@ -3,7 +3,8 @@
 
 @section('content')
 
-
+  <div class="contents">
+    <div class="container-fluid">
 <div class="row">
   <div class="col-lg-12">
     <div class="userDatatable global-shadow border-light-0 p-30 bg-white radius-xl w-100 mb-30">
@@ -145,4 +146,6 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
 @endsection

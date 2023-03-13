@@ -1,5 +1,3 @@
-@extends('admin.index_master_admin')
-@section('content')
   <div class="sign section--bg" data-bg="img/section/section.jpg">
     <div class="container">
       <div class="row">
@@ -42,4 +40,3 @@
       </div>
     </div>
   </div>
-@endsection

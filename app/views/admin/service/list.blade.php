@@ -182,7 +182,7 @@
                       <td>
                         <div class="userDatatable-content--subject">
                           @foreach($category as $ct)
-                            @if($ct->id == $sv->id_cate)
+                            @if($sv->id_cate == $ct->id)
                                 {{$ct->name}}
                             @endif
                           @endforeach
@@ -221,23 +221,12 @@
                   <ul class="dm-pagination d-flex">
                     <li class="dm-pagination__item">
                       <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-left"></span></a>
-                      <a href="#" class="dm-pagination__link"><span class="page-number">1</span></a>
-                      <a href="#" class="dm-pagination__link active"><span class="page-number">2</span></a>
-                      <a href="#" class="dm-pagination__link"><span class="page-number">3</span></a>
-                      <a href="#" class="dm-pagination__link pagination-control"><span class="page-number">...</span></a>
-                      <a href="#" class="dm-pagination__link"><span class="page-number">12</span></a>
+                      @for($i = 0; $i < $pages; $i++)
+                        <a href="{{route('service-list/?page='.$i+1)}}" class="dm-pagination__link"><span class="page-number">{{$i+1}}</span></a>
+                      @endfor
                       <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-right"></span></a>
                       <a href="#" class="dm-pagination__option">
                       </a>
-                    </li>
-                    <li class="dm-pagination__item">
-                      <div class="paging-option">
-                        <select name="page-number" class="page-selection">
-                          <option value="20">20/page</option>
-                          <option value="40">40/page</option>
-                          <option value="60">60/page</option>
-                        </select>
-                      </div>
                     </li>
                   </ul>
                 </nav>
@@ -249,6 +238,40 @@
     </div>
   </div>
 @endsection
+@push('scripts')
+  <script>
+    function deletItem(id){
+      Swal.fire({
+        title: 'Bạn chắc chắn?',
+        text: "Bạn có chắc chắn muốn xóa không ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `{{route('delete-service/')}}` + id;
+        }
+      })
+    }
+  </script>
+  @if(isset($_SESSION['success']) && isset($_GET['msg']))
+    <script>
+      Swal.fire(
+        'Thông báo!',
+        '{{$_SESSION['success']}}',
+        'success'
+      )
+      @php
+        unset( $_SESSION['success']);
+      @endphp
+      window.setTimeout(function(){
+        window.location.href = '{{ route('service-list') }}';
+      },1500)
+    </script>
+  @endif
+@endpush
 
 
 

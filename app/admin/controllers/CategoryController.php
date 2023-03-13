@@ -10,8 +10,19 @@ class CategoryController extends BaseController{
         $this->category = new Category();
     }
     public function tableCategory(){
-        $category = $this->category->getAllCategory();
-        $this->render('admin.category.list', compact('category'));
+        $result = $this->category->countColumn();
+        $number = 0;
+        if ($result != null && count($result) > 0){
+            $number = $result[0]->number;
+        }
+        $pages = ceil($number / 8);
+        $current_page = 1;
+        if (isset($_GET['page'])){
+            $current_page = $_GET['page'];
+        }
+        $index = ($current_page - 1) * 8;
+        $category = $this->category->getAllLimit($index);
+        $this->render('admin.category.list', compact('category', 'pages'));
     }
     public function addCategoryPost(){
         if (isset($_POST['add-new'])){

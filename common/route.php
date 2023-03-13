@@ -21,7 +21,6 @@ $router->filter('auth', function(){
 //    return "trang chủ";
 //});
 $router->get('/admin', [App\Controllers\UsersController::class, 'dashboard']);
-$router->get('/admin-lỗian', [App\admin\controllers\HomeController::class, 'index']);
 //Category
 $router->get('add-category', [App\admin\controllers\CategoryController::class, 'addCategory']);
 $router->post('add-category-post', [App\admin\controllers\CategoryController::class, 'addCategoryPost']);
@@ -45,15 +44,16 @@ $router->get('/log-out', function () {
 //$router->get('edit-service/{id}', [App\admin\controllers\ServiceController::class, 'editService']);
 //$router->post('update-service/{id}', [App\admin\controllers\ServiceController::class, 'updateServicePost']);
 //$router->get('delete-service/{id}', [App\admin\controllers\ServiceController::class, 'deteleService']);
-//$router->get('detail-service/{id}', [App\admin\controllers\BlogServiceController::class, 'listBlogSvIdCate']);
+$router->get('detail-service/{id}', [App\admin\controllers\BlogServiceController::class, 'listBlogSvIdCate']);
 //Blog Service
 $router->get('service-blog', [App\admin\controllers\BlogServiceController::class, 'listBlogSv']);
 $router->get('add-blog-service', [App\admin\controllers\BlogServiceController::class, 'addBlogSv']);
 $router->post('add-blog-service-post', [App\admin\controllers\BlogServiceController::class, 'addBlogSvPost']);
 $router->get('edit-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'editBlogSv']);
 $router->post('update-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'updateBlogSvPost']);
-
 $router->get('delete-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'deleteBlogSv']);
+$router->get('detail-blog-service/{id}', [App\admin\controllers\BlogServiceController::class, 'detailBlogSv']);
+
 //giao-dien
 $router->get('contact-us', [UserDisplayController::class, 'index']);
 $router->get('quan-li-khach-hang', [UserDisplayController::class, 'index']);
@@ -67,16 +67,13 @@ $router->get('questions', [QuestionsController::class, 'index']);
 $router->get('add-question', [QuestionsController::class, 'addQuestion']);
 $router->post('add-question', [QuestionsController::class, 'addQuestionPost']);
 $router->get('edit-question/{id}', [QuestionsController::class, 'editQuestion']);
-$router->post('update-question/{id}', [QuestionsController::class, 'updateQuestion']);
+$router->post('edit-question/{id}', [QuestionsController::class, 'updateQuestion']);
 $router->get('delete-question/{id}', [QuestionsController::class, 'deleteQuestion']);
 $router->get('blog-question',[QuestionsController::class, 'blogQuestion']);
 
 //login -register
 $router->get('home', [App\Controllers\HomeController::class, 'index']);
 $router->get('sign-in', [App\Controllers\UsersController::class, 'index']);
-//$router->get('/',function (){
-//    return "xin chào Hoa ";
-//});
 $router->post('sign-in', [App\Controllers\UsersController::class, 'index']);
 $router->get('sign-up',[App\Controllers\UsersController::class,'signup']);
 $router->post('sign-up',[App\Controllers\UsersController::class,'signup']);

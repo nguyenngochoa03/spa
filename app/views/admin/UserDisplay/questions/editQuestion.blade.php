@@ -43,21 +43,29 @@
       @endif
       <div class="card mb-50">
         <div class="row justify-content-center">
-          <div class="col-md-5 col-10">
+          <div class="col-md-10 col-10">
             <div class="mt-40 mb-50">
               <div class="edit-profile__body">
-                <form>
+                <form action="{{route('edit-question/'.$dataOne->id)}}" method="post">
                   <div class="form-group mb-25">
                     <label for="name1">Câu hỏi</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name1"
+                      name="question"
+                      value="{{ $dataOne->question }}"
+                    />
                   </div>
                   <div class="form-group mb-25">
                     <label for="name2">Trả lời</label>
-                    <textarea name="reply" id="" cols="30" rows="10"></textarea>
+                    <textarea name="reply" id="" cols="30" rows="10">{{ $dataOne->reply }}</textarea>
                   </div>
                   <div
                     class="button-group d-flex pt-25 justify-content-md-end justify-content-start"
                   >
                     <button
+                      name="sb-edit-question"
                       class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2 btn-sm"
                     >
                       Thêm
@@ -72,3 +80,24 @@
     </div>
   </div>
 @endsection
+
+@push('scripts')
+  <script >
+    CKEDITOR.replace( 'reply', {
+      filebrowserUploadUrl: './app/views/ckeditor/upload.php'
+    } );
+  </script>
+
+  @if(isset($_SESSION['success']) && isset($_GET['msg']))
+    <script>
+      Swal.fire(
+        'cập nhật!',
+        '{{$_SESSION['success']}}',
+        'success'
+      )
+      window.setTimeout(function(){
+        window.location.href = '{{ route('questions') }}';
+      },1000)
+    </script>
+  @endif
+@endpush
