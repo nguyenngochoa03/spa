@@ -85,8 +85,6 @@
     CKEDITOR.replace( 'reply', {
       filebrowserUploadUrl: './app/views/ckeditor/upload.php'
     } );
-
-
   </script>
 
   @if(isset($_SESSION['success']) && isset($_GET['msg']))
