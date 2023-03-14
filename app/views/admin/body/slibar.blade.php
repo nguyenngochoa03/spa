@@ -39,6 +39,9 @@
             <li class="">
               <a href="{{route('instagram')}}">instagram</a>
             </li>
+            <li class="">
+              <a href="{{route('newletters')}}">Newletters</a>
+            </li>
           </ul>
         </li>
         <li class="has-child">

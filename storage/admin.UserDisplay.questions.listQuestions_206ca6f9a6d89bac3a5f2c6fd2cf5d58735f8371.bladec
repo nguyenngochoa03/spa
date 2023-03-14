@@ -96,6 +96,7 @@
  </ul>
  </td>
  </tr>
+
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>
  </table>

@@ -63,6 +63,9 @@ $router->get('edit-insta/{id}', [UserDisplayController::class, 'editInsta']);
 $router->post('update-contact/{id}', [UserDisplayController::class, 'update']);
 $router->post('update-insta/{id}', [UserDisplayController::class, 'updateInsta']);
 $router->get('questions', [QuestionsController::class, 'index']);
+$router->get('newletters',[App\controllers\NewlettersController::class ,'index']);
+$router->get('edit-newletters/{id}', [App\controllers\NewlettersController::class, 'edit']);
+$router->post('update-newletters/{id}', [App\controllers\NewlettersController::class, 'update']);
 
 $router->get('add-question', [QuestionsController::class, 'addQuestion']);
 $router->post('add-question', [QuestionsController::class, 'addQuestionPost']);
