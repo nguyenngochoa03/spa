@@ -4,59 +4,159 @@
  <div class="contents">
  <div class="container-fluid">
  <div class="row">
- <div class="col-lg-12">
+ <div class="col-lg-12 mb-30">
+ <div class="card mt-30">
+ <div class="card-body">
  <div
- class="breadcrumb-main user-member justify-content-sm-between"
+ class="userDatatable adv-table-table global-shadow border-light-0 w-100 adv-table"
  >
- <div
- class="d-flex flex-wrap justify-content-center breadcrumb-main__wrapper"
+ <div class="table-responsive">
+ <div class="adv-table-table__header">
+ <h4>Newletters</h4>
+
+ <button onclick="location.href='<?php echo \htmlentities(route('add-newletters')??'', ENT_QUOTES, 'UTF-8', false); ?>'" class="btn btn-primary btn-default btn-rounded ">Thêm
+ </button>
+
+ </div>
+ <div id="filter-form-container"></div>
+ <table
+ class="table mb-0 table-borderless adv-table text-center"
+ data-sorting="true"
+ data-filter-container="#filter-form-container"
+ data-paging-current="1"
+ data-paging-position="right"
+ data-paging-size="10"
  >
- <div
- class="d-flex align-items-center user-member__title justify-content-center me-sm-25"
+ <thead>
+ <tr class="userDatatable-header">
+ <th>
+ <span class="userDatatable-title">id</span>
+ </th>
+ <th>
+ <span class="userDatatable-title">Logo</span>
+ </th>
+ <th>
+ <span class="userDatatable-title">Mô tả</span>
+ </th>
+ <th>
+ <span class="userDatatable-title">Nội dung</span>
+ </th>
+ <th>
+ <span class="userDatatable-title">Trạng thái</span>
+ </th>
+ <th>
+ <span class="userDatatable-title">Create_date</span>
+ </th>
+ <th>
+ <span class="userDatatable-title float-end"
+ >Chức năng</span
  >
- <h4 class="text-capitalize fw-500 breadcrumb-title">
- Newletters
- </h4>
- </div>
- </div>
- </div>
- </div>
- </div>
- <div class="row">
+ </th>
+ </tr>
+ </thead>
+ <tbody>
  <?php $__currentLoopData = $allData; $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $value): $loop = $this->incrementLoopIndices();  ?>
- <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
- <div class="card " style="background-color:#fdf5e6;">
- <div class="card-body text-center pt-30 px-25 pb-0">
- <div class="account-profile-cards" >
- <div class="ap-img d-flex justify-content-center mb-2">
- <i class='<?php echo \htmlentities($value->logo??'', ENT_QUOTES, 'UTF-8', false); ?>' style="font-size:80px;color:#C6651A;"></i>
+ <tr>
+ <td>
+ <div class="userDatatable-content"><?php echo \htmlentities($value->id??'', ENT_QUOTES, 'UTF-8', false); ?></div>
+ </td>
+ <td>
+ <div class="d-flex">
+ <div class="userDatatable-inline-title">
+ <a href="#" class="text-dark fw-500">
+ <img src="./public/upload/insta/<?php echo \htmlentities($value->logo??'', ENT_QUOTES, 'UTF-8', false); ?>"  width="50" alt="">
+ </a>
  </div>
- <div class="ap-nameAddress">
- <h6 class="ap-nameAddress__title"><?php echo \htmlentities($value->content??'', ENT_QUOTES, 'UTF-8', false); ?></h6>
- <p class="ap-nameAddress__subTitle fs-14 pt-1 m-0">
+ </div>
+ </td>
+
+ <td>
+ <div class="userDatatable-content text-truncate" style="max-width: 150px;">
  <?php echo \htmlentities($value->meta??'', ENT_QUOTES, 'UTF-8', false); ?>
 
- </p>
- <p class="ap-nameAddress__subTitle fs-14 pt-1 m-0">
+ </div>
+ </td>
+ <td>
+ <div class="userDatatable-content text-truncate" style="max-width: 150px;">
+ <?php echo \htmlentities($value->content??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </div>
+ </td>
+ <td>
+ <div class="userDatatable-content text-truncate" style="max-width: 150px;">
+ <?php echo \htmlentities($value->statuts??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </div>
+ </td>
+ <td>
+ <div class="userDatatable-content text-truncate" style="max-width: 150px;">
  <?php echo \htmlentities($value->create_date??'', ENT_QUOTES, 'UTF-8', false); ?>
 
- </p>
  </div>
- <div
- class="ap-button account-profile-cards__button button-group d-flex justify-content-center flex-wrap pt-20"
+ </td>
+ <td>
+ <ul
+ class="orderDatatable_actions mb-0 d-flex flex-wrap"
  >
- <button onclick="location.href='<?php echo \htmlentities(route('edit-newletters/'.$value->id)??'', ENT_QUOTES, 'UTF-8', false); ?>'" class="btn btn-success text-white bg-success btn-default btn-squared btn-shadow-success btn-rounded my-2 ">Sửa
+
+ <li>
+ <button onclick="location.href='<?php echo \htmlentities(route('edit-newletters/'.$value->id)??'', ENT_QUOTES, 'UTF-8', false); ?>'" class="btn btn-primary btn-default btn-rounded bg-primary text-white">Sửa
  </button>
- </div>
- </div>
- </div>
- </div>
- </div>
+ </li>
+ <li>
+ <button onclick="deletItem(<?php echo $value->id; ?>)"  class="btn btn-danger btn-default btn-rounded bg-danger text-white">Xóa
+ </button>
+ </li>
+ </ul>
+ </td>
+ </tr>
+
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  </div>
  </div>
 <?php $this->stopSection(); ?>
+<?php $this->startPush('scripts'); ?>
+ <script>
+ function deletItem(id){
+ Swal.fire({
+ title: 'Bạn chắc chắn?',
+ text: "Bạn có chắc chắn muốn xóa không ?",
+ icon: 'warning',
+ showCancelButton: true,
+ confirmButtonColor: '#3085d6',
+ cancelButtonColor: '#d33',
+ confirmButtonText: 'Yes, delete it!'
+ }).then((result) => {
+ if (result.isConfirmed) {
+ window.location.href = `<?php echo \htmlentities(route('delete-newletters/')??'', ENT_QUOTES, 'UTF-8', false); ?>` + id;
+ }
+ })
+ }
+ </script>
+ <?php if(isset($_SESSION['success']) && isset($_GET['msg'])): ?>
+ <script>
+ Swal.fire(
+ 'Delete!',
+ '<?php echo \htmlentities($_SESSION['success']??'', ENT_QUOTES, 'UTF-8', false); ?>',
+ 'success'
+ )
+ <?php 
+ unset( $_SESSION['success']);
+ ?>
+ window.setTimeout(function(){
+ window.location.href = '<?php echo \htmlentities(route('newletters')??'', ENT_QUOTES, 'UTF-8', false); ?>';
+ },1000)
+ </script>
+ <?php endif; ?>
+<?php $this->stopPush(); ?>
 
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('admin.index_master_admin'); } ?>

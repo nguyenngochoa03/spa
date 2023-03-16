@@ -6,7 +6,6 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="breadcrumb-main">
-            <h4 class="text-capitalize breadcrumb-title">Edit Contact"</h4>
             <div class="breadcrumb-action justify-content-center flex-wrap">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -55,34 +54,27 @@
                 </div>
               @endif
               <div class="card-body pb-md-50">
-                <form action="{{route('update-newletters/'.$oneData->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('add-newletters')}}" method="post" enctype="multipart/form-data">
                   <div class="row mx-n15">
                     <div class="col-md-4 mb-20 px-15">
                       <label for="validationDefault01" class="il-gray fs-14 fw-500 align-center mb-10">logo
                       </label>
                       <input type="file" name="logo" class="form-control ih-medium ip-light radius-xs b-light"  >
-                      <img src="{{route('public/upload/insta/'.$oneData->logo)}}" alt="" >
                     </div>
                     <div class="col-md-4 mb-20 px-15">
                       <label for="validationDefault02" class="il-gray fs-14 fw-500 align-center mb-10">Nội dung
                       </label>
-                      <input type="text" name="content" class="form-control ih-medium ip-light radius-xs b-light" value="{{$oneData->content}}"  required>
+                      <input type="text" name="content" class="form-control ih-medium ip-light radius-xs b-light"  required>
                     </div>
                     <div class="col-md-4 mb-20 px-15">
                       <label for="validationDefault02"  class="il-gray fs-14 fw-500 align-center mb-10">mô tả</label>
-                      <input type="text" name="desribi" class="form-control  ih-medium ip-light radius-xs b-light" id="validationDefault02" value="{{$oneData->meta}}" required>
+                      <input type="text" name="desribi" class="form-control  ih-medium ip-light radius-xs b-light" id="validationDefault02"  required>
                     </div>
+
                   </div>
-                  <div class="support-form__input-status">
-                    <label>Status</label>
-                    <div class="dm-select ">
-                      <select name="select-search" class="select-search form-control ">
-                        <option value="1" >Publish</option>
-                        <option value="0" selected>Private</option>
-                      </select>
-                    </div>
-                  </div>
-                  <input class="btn btn-primary px-30" name="sb-newletters" type="submit" value="Submit">
+
+
+                  <input class="btn btn-primary px-30" name="sp-newletters" type="submit" value="Submit">
                 </form>
               </div>
             </div>
@@ -98,7 +90,7 @@
   @if(isset($_SESSION['success']) && isset($_GET['msg']))
     <script>
       Swal.fire(
-        'Update!',
+        'Thêm mới !',
         '{{$_SESSION['success']}}',
         'success'
       )
@@ -108,4 +100,3 @@
     </script>
   @endif
 @endpush
-
